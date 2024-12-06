@@ -1,0 +1,11 @@
+{
+    "python.analysis.extraPaths": [
+        "./services/storage/.venv/Lib/site-packages",
+        "./services/users/.venv/Lib/site-packages",
+        "./services/worker/.venv/Lib/site-packages"
+    ],
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+}
