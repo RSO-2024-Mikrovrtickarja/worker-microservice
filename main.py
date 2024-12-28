@@ -1,18 +1,14 @@
 from datetime import datetime
-from PIL import Image, ImageOps
+from PIL import Image
 import zmq
 from configuration import settings
 from pydantic import BaseModel
 from typing import Optional
 import uuid
 import requests
-from contextlib import asynccontextmanager
-from fastapi import FastAPI
 from enum import Enum
 from tempfile import SpooledTemporaryFile
 import os
-import json
-import io
 
 
 class ImageFormat(Enum):
