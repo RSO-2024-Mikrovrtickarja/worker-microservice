@@ -1,5 +1,8 @@
 from datetime import datetime
+import threading
 from PIL import Image
+from fastapi import FastAPI, Response
+import uvicorn
 import zmq
 from configuration import settings
 from pydantic import BaseModel
@@ -9,6 +12,13 @@ import requests
 from enum import Enum
 from tempfile import SpooledTemporaryFile
 import os
+
+app = FastAPI()
+
+
+@app.get("/health")
+def health_check():
+    return Response(status_code=200)
 
 
 class ImageFormat(Enum):
@@ -124,8 +134,17 @@ class ProcessImageJob:
 
 process_image_job = ProcessImageJob()
 
+
+def start_http_server():
+    print("Starting internal HTTP server for health checks.")
+    uvicorn.run(app, host="0.0.0.0", port=8005)
+
+
 if __name__ == "__main__":
     # process_image_job = ProcessImageJob()
+
+    http_server_thread = threading.Thread(target=start_http_server)
+    http_server_thread.start()
 
     print("Worker microservice is running.")
 
