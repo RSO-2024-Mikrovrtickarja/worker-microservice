@@ -4,8 +4,9 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     # Configures the ZeroMQ messaging system that
     # is connected to the storage.
-    zmq_host: str
-    zmq_port: int
+    rabbitmq_host: str
+    rabbitmq_port: int
+    rabbitmq_queue_name: str
 
     photo_storage_host: str
     photo_storage_port: int
