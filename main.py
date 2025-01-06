@@ -214,6 +214,10 @@ class ProcessImageJob:
             parameters=pika.ConnectionParameters(
                 host=settings.rabbitmq_host,
                 port=settings.rabbitmq_port,
+                credentials=pika.PlainCredentials(
+                    username=settings.rabbitmq_username,
+                    password=settings.rabbitmq_password,
+                )
             )
         )
 

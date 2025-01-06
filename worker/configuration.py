@@ -6,6 +6,8 @@ class Settings(BaseSettings):
     # is connected to the storage.
     rabbitmq_host: str
     rabbitmq_port: int
+    rabbitmq_username: str
+    rabbitmq_password: str
     rabbitmq_queue_name: str
 
     photo_storage_host: str
